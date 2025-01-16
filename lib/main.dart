@@ -1,4 +1,4 @@
-import 'package:bankio/splash_screen.dart';
+import 'package:bankio/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
