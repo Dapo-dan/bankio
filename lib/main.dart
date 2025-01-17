@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bankio',
+      debugShowCheckedModeBanner: false,
       theme: AppThemes.lightTheme, // Light theme
       darkTheme: AppThemes.darkTheme, // Dark theme
       themeMode: ThemeMode.system, // Use system theme by default
