@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-const double BODY_PADDING = 15.0;
+const double BODY_PADDING = 25.0;
 
 verticalSpaceTiny() => const SizedBox(height: 5);
 verticalSpaceSmall() => const SizedBox(height: 10);

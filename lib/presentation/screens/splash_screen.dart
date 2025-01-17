@@ -21,7 +21,6 @@ class SplashScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Icon or logo
                       Container(
                         height: 100,
                         width: 100,
@@ -35,14 +34,12 @@ class SplashScreen extends StatelessWidget {
                           color: theme.primaryColor,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      verticalSpaceSmall(),
                       Text(
                         'Bankio',
-                        style: theme.textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: theme.textTheme.headlineMedium,
                       ),
-                      const SizedBox(height: 8),
+                      verticalSpaceSmall(),
                       Text(
                         'No 1 for E-bank, e-wallet, personal financial mobile application.',
                         textAlign: TextAlign.center,
@@ -52,10 +49,8 @@ class SplashScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Get Started Button
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                padding: const EdgeInsets.only(bottom: 20),
                 child: AppButton(
                   onTap: () {
                     // Navigate to the next screen
@@ -64,23 +59,6 @@ class SplashScreen extends StatelessWidget {
                   buttonColor: theme.primaryColor,
                 ),
               ),
-
-              // Payment provider logos
-              // Padding(
-              //   padding: const EdgeInsets.only(bottom: 16.0),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Image.asset('assets/icons/visa.png', height: 30),
-              //       SizedBox(width: 12),
-              //       Image.asset('assets/icons/mastercard.png', height: 30),
-              //       SizedBox(width: 12),
-              //       Image.asset('assets/icons/amex.png', height: 30),
-              //       SizedBox(width: 12),
-              //       Image.asset('assets/icons/paypal.png', height: 30),
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ),
