@@ -1,5 +1,5 @@
-import 'package:bankio/presentation/screens/splash_screen.dart';
-import 'package:bankio/utils/app_themes.dart';
+import 'package:bankio/presentation/screens/login_page.dart';
+import 'package:bankio/presentation/themes/app_themes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme, // Light theme
       darkTheme: AppThemes.darkTheme, // Dark theme
       themeMode: ThemeMode.system, // Use system theme by default
-      home: const SplashScreen(),
+      home: const LoginPage(),
     );
   }
 }

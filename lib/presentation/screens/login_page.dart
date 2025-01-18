@@ -1,4 +1,6 @@
 import 'package:bankio/blocs/login_bloc/login_bloc.dart';
+import 'package:bankio/presentation/widgets/button.dart';
+import 'package:bankio/presentation/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +9,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(color: Theme.of(context).iconTheme.color),
@@ -21,7 +25,7 @@ class LoginPage extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               Text(
-                "Let’s you in",
+                "Let's you in",
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium
@@ -29,22 +33,22 @@ class LoginPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 30),
-              _SocialLoginButton(
+              SocialLoginButton(
                 label: "Continue with Facebook",
                 icon: Icons.facebook,
-                color: Colors.blue[800],
+                color: theme.colorScheme.surface,
               ),
               const SizedBox(height: 16),
-              _SocialLoginButton(
+              SocialLoginButton(
                 label: "Continue with Google",
                 icon: Icons.g_mobiledata,
-                color: Colors.red[600],
+                color: theme.colorScheme.onPrimary,
               ),
               const SizedBox(height: 16),
-              const _SocialLoginButton(
+              SocialLoginButton(
                 label: "Continue with Apple",
                 icon: Icons.apple,
-                color: Colors.black,
+                color: theme.colorScheme.secondary,
               ),
               const SizedBox(height: 30),
               const Row(
@@ -58,8 +62,8 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
+              AppButton(
+                onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -70,45 +74,16 @@ class LoginPage extends StatelessWidget {
                     ),
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(16),
-                ),
-                child: const Text("SIGN IN WITH PASSWORD"),
+                title: "SIGN IN WITH PASSWORD",
               ),
               const SizedBox(height: 30),
               TextButton(
                 onPressed: () {},
-                child: const Text("Don’t have an account? Sign up"),
+                child: const Text("Don't have an account? Sign up"),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SocialLoginButton extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final Color? color;
-
-  const _SocialLoginButton({
-    required this.label,
-    required this.icon,
-    this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton.icon(
-      onPressed: () {},
-      icon: Icon(icon, color: color),
-      label: Text(label),
-      style: OutlinedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        side: BorderSide(color: color ?? Theme.of(context).primaryColor),
-        backgroundColor: Theme.of(context).cardColor,
       ),
     );
   }
@@ -185,11 +160,12 @@ class SignInPage extends StatelessWidget {
             const SizedBox(height: 30),
             BlocBuilder<LoginBloc, LoginState>(
               builder: (context, state) {
-                return ElevatedButton(
-                  onPressed: state.canSubmit
-                      ? () => context.read<LoginBloc>().add(Submitted())
-                      : null,
-                  child: const Text("SIGN IN"),
+                return AppButton(
+                  allowSubmit: state.canSubmit,
+                  onTap: () => context.read<LoginBloc>().add(
+                        Submitted(),
+                      ),
+                  title: "SIGN IN",
                 );
               },
             ),
