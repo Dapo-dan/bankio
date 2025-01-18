@@ -41,7 +41,7 @@ class SplashScreen extends StatelessWidget {
                       ),
                       verticalSpaceSmall(),
                       Text(
-                        'No 1 for E-bank, e-wallet, personal financial mobile application.',
+                        'No 1 app for E-bank, e-wallet, personal financial mobile application.',
                         textAlign: TextAlign.center,
                         style: theme.textTheme.bodySmall,
                       ),
