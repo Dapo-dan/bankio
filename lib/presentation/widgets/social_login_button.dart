@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class SocialLoginButton extends StatelessWidget {
   final String label;
-  final IconData icon;
+  final String icon;
   final Color? color;
 
   const SocialLoginButton({
@@ -23,17 +23,16 @@ class SocialLoginButton extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: color ?? Theme.of(context).primaryColor,
+        color: color ?? theme.colorScheme.primaryContainer,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          Image.asset(
             icon,
-            size: 50,
-            color: Colors.white,
+            width: 50,
           ),
-          horizontalSpaceSmall(),
+          horizontalSpaceMedium(),
           Text(
             label,
             style: theme.textTheme.bodySmall,
@@ -41,16 +40,37 @@ class SocialLoginButton extends StatelessWidget {
         ],
       ),
     );
+  }
+}
 
-    // OutlinedButton.icon(
-    //   onPressed: () {},
-    //   icon: Icon(icon, color: color),
-    //   label: Text(label),
-    //   style: OutlinedButton.styleFrom(
-    //     padding: const EdgeInsets.symmetric(vertical: 12),
-    //     side: BorderSide(color: color ?? Theme.of(context).primaryColor),
-    //     backgroundColor: Theme.of(context).cardColor,
-    //   ),
-    // );
+class SocialLoginButton2 extends StatelessWidget {
+  final String icon;
+
+  const SocialLoginButton2({
+    super.key,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 15,
+        horizontal: 40,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: theme.colorScheme.onPrimaryContainer,
+        border: Border.all(
+          color: theme.colorScheme.primaryContainer,
+        ),
+      ),
+      child: Image.asset(
+        icon,
+        width: 30,
+      ),
+    );
   }
 }

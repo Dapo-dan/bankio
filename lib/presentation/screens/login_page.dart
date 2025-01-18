@@ -1,6 +1,8 @@
 import 'package:bankio/blocs/login_bloc/login_bloc.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:bankio/presentation/widgets/social_login_button.dart';
+import 'package:bankio/utils/const.dart';
+import 'package:bankio/utils/image_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,55 +15,55 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(color: Theme.of(context).iconTheme.color),
+        leading: BackButton(color: theme.iconTheme.color),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: BODY_PADDING),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              verticalSpaceLarge(),
               Text(
                 "Let's you in",
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
+                style: theme.textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 30),
+              verticalSpaceLarge(),
               SocialLoginButton(
                 label: "Continue with Facebook",
-                icon: Icons.facebook,
+                icon: ImagePath.facebook,
                 color: theme.colorScheme.surface,
               ),
-              const SizedBox(height: 16),
+              verticalSpaceMedium(),
               SocialLoginButton(
                 label: "Continue with Google",
-                icon: Icons.g_mobiledata,
+                icon: ImagePath.google,
                 color: theme.colorScheme.onPrimary,
               ),
-              const SizedBox(height: 16),
+              verticalSpaceMedium(),
               SocialLoginButton(
                 label: "Continue with Apple",
-                icon: Icons.apple,
+                icon: ImagePath.apple,
                 color: theme.colorScheme.secondary,
               ),
-              const SizedBox(height: 30),
-              const Row(
+              verticalSpaceLarge(),
+              Row(
                 children: [
-                  Expanded(child: Divider(color: Colors.grey)),
+                  const Expanded(child: Divider(color: Colors.grey)),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text("or"),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      "or",
+                      style: theme.textTheme.bodySmall,
+                    ),
                   ),
-                  Expanded(child: Divider(color: Colors.grey)),
+                  const Expanded(child: Divider(color: Colors.grey)),
                 ],
               ),
-              const SizedBox(height: 30),
+              verticalSpaceLarge(),
               AppButton(
                 onTap: () {
                   Navigator.push(
@@ -76,10 +78,24 @@ class LoginPage extends StatelessWidget {
                 },
                 title: "SIGN IN WITH PASSWORD",
               ),
-              const SizedBox(height: 30),
-              TextButton(
-                onPressed: () {},
-                child: const Text("Don't have an account? Sign up"),
+              verticalSpaceLarge(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: theme.textTheme.bodySmall,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Sign up",
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -94,25 +110,25 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(color: Theme.of(context).iconTheme.color),
+        leading: BackButton(color: theme.iconTheme.color),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.symmetric(horizontal: BODY_PADDING),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            verticalSpaceLarge(),
             Text(
-              "Sign in with password",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
+              "Sign in with\npassword",
+              style: theme.textTheme.headlineMedium,
             ),
-            const SizedBox(height: 30),
+            verticalSpaceMedium(),
             BlocBuilder<LoginBloc, LoginState>(
               builder: (context, state) {
                 return Column(
@@ -140,7 +156,7 @@ class SignInPage extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 16),
+            verticalSpaceMedium(),
             Row(
               children: [
                 Checkbox(
@@ -149,15 +165,23 @@ class SignInPage extends StatelessWidget {
                     context.read<LoginBloc>().add(RememberMeToggled(value!));
                   },
                 ),
-                const Text("Remember me"),
+                Text(
+                  "Remember me",
+                  style: theme.textTheme.bodySmall,
+                ),
                 const Spacer(),
                 TextButton(
                   onPressed: () {},
-                  child: const Text("Reset password"),
+                  child: Text(
+                    "Reset password",
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.primaryColor,
+                    ),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            verticalSpaceMedium(),
             BlocBuilder<LoginBloc, LoginState>(
               builder: (context, state) {
                 return AppButton(
@@ -168,6 +192,54 @@ class SignInPage extends StatelessWidget {
                   title: "SIGN IN",
                 );
               },
+            ),
+            verticalSpaceLarge(),
+            Row(
+              children: [
+                const Expanded(child: Divider(color: Colors.grey)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    "or continue with",
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+                const Expanded(child: Divider(color: Colors.grey)),
+              ],
+            ),
+            verticalSpaceMedium(),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SocialLoginButton2(
+                  icon: ImagePath.facebook,
+                ),
+                SocialLoginButton2(
+                  icon: ImagePath.google,
+                ),
+                SocialLoginButton2(
+                  icon: ImagePath.apple,
+                ),
+              ],
+            ),
+            verticalSpaceLarge(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account?",
+                  style: theme.textTheme.bodySmall,
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Sign up",
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.primaryColor,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

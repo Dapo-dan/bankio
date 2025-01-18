@@ -20,6 +20,8 @@ class AppThemes {
       onError: Color(0xFFE8FFEB), //BG-2
       surface: Color(0xFFECE7FE), //EX-1
       onSurface: Color(0xFFDFF1FF), //BG-4
+      primaryContainer: Color(0xFFD9D9D9), //Grey-4
+      onPrimaryContainer: Colors.white,
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
@@ -82,7 +84,7 @@ class AppThemes {
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: const Color(0xFF89B9FF),
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: const Color(0xFF202020),
     cardColor: Colors.grey[800],
     appBarTheme: const AppBarTheme(
       color: Colors.deepOrange,
@@ -98,6 +100,8 @@ class AppThemes {
       onError: Color(0xFF2A4037), //BG-2
       surface: Color(0xFF413E49), //EX-1
       onSurface: Color(0xFF103E63), //BG-4
+      primaryContainer: Color(0xFF767676), //Grey-4
+      onPrimaryContainer: Colors.black,
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
