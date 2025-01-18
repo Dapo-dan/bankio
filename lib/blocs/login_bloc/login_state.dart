@@ -15,7 +15,12 @@ class LoginState extends Equatable {
     this.passwordError,
   });
 
-  bool get canSubmit => emailError == null && passwordError == null;
+  bool get canSubmit =>
+      email.isNotEmpty &&
+      password.isNotEmpty &&
+      emailError == null &&
+      passwordError == null &&
+      rememberMe == true;
 
   LoginState copyWith({
     String? email,
@@ -34,5 +39,6 @@ class LoginState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [email, password, rememberMe, emailError, passwordError];
+  List<Object?> get props =>
+      [email, password, rememberMe, emailError, passwordError];
 }

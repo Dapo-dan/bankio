@@ -35,15 +35,15 @@ class AppButton extends StatelessWidget {
           color: buttonColor ??
               (allowSubmit ? theme.primaryColor : theme.disabledColor),
           borderRadius: BorderRadius.circular(borderRadius ?? 10),
-          border: Border.all(
-            color: borderColor ??
-                (allowSubmit ? theme.primaryColor : theme.disabledColor),
-          ),
+          // border: Border.all(
+          //   color: borderColor ??
+          //       (allowSubmit ? theme.primaryColor : theme.disabledColor),
+          // ),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: hPadding ?? 30.0,
-            vertical: vPadding ?? 13.0,
+            vertical: vPadding ?? 16.0,
           ),
           child: Center(
             child: isLoading && loadingText != null
@@ -68,13 +68,10 @@ class AppButton extends StatelessWidget {
                       ),
                     ],
                   )
-                : Text(title, style: theme.textTheme.labelLarge
-                    // ?.copyWith(
-                    //   color: textColor ??
-                    //       (allowSubmit ? Colors.white : Colors.black),
-                    //   fontWeight: FontWeight.bold,
-                    // ),
-                    ),
+                : Text(
+                    title,
+                    style: theme.textTheme.labelLarge,
+                  ),
           ),
         ),
       ),
