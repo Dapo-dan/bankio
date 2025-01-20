@@ -1,4 +1,4 @@
-import 'package:bankio/presentation/screens/login_page.dart';
+import 'package:bankio/presentation/screens/auth/login_page.dart';
 import 'package:bankio/presentation/themes/app_themes.dart';
 import 'package:flutter/material.dart';
 

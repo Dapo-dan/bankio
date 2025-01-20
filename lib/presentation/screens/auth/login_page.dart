@@ -1,4 +1,4 @@
-import 'package:bankio/blocs/login_bloc/login_bloc.dart';
+import 'package:bankio/blocs/auth_bloc/login_bloc/login_bloc.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:bankio/presentation/widgets/social_login_button.dart';
 import 'package:bankio/presentation/widgets/text_input_field.dart';
