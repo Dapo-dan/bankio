@@ -15,6 +15,7 @@ class TextInputForm extends StatefulWidget {
     this.onSubmit,
     this.enabled = true,
     this.controller,
+    this.errorText,
     this.label,
     this.hint,
     this.textCapitalization = TextCapitalization.none,
@@ -34,7 +35,7 @@ class TextInputForm extends StatefulWidget {
   final bool enabled;
   final TextEditingController? controller;
   final bool obscure;
-  final String? label;
+  final String? label, errorText;
   final String? prefixText;
   final String? hint;
   final TextCapitalization textCapitalization;
@@ -89,6 +90,10 @@ class _TextInputFormState extends State<TextInputForm> {
               maxLength: widget.maxLength,
               cursorColor: theme.primaryColor,
               decoration: InputDecoration(
+                errorText: widget.errorText,
+                errorStyle: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.error,
+                ),
                 filled: true,
                 fillColor: theme.colorScheme.onPrimaryContainer,
                 border: OutlineInputBorder(

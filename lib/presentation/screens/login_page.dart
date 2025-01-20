@@ -137,30 +137,19 @@ class SignInPage extends StatelessWidget {
                     children: [
                       TextInputForm(
                         hint: "Email",
+                        errorText: state.emailError,
                         onChanged: (email) =>
                             context.read<LoginBloc>().add(EmailChanged(email)),
                       ),
-                      // TextField(
-                      //   decoration: InputDecoration(
-                      //     labelText: "Email",
-                      //     errorText: state.emailError,
-                      //   ),
-                      // ),
                       const SizedBox(height: 16),
                       TextInputForm(
                         hint: "Password",
                         obscure: true,
+                        errorText: state.passwordError,
                         onChanged: (password) => context
                             .read<LoginBloc>()
                             .add(PasswordChanged(password)),
                       ),
-                      // TextField(
-                      //   obscureText: true,
-                      //   decoration: InputDecoration(
-                      //     labelText: "Password",
-                      //     errorText: state.passwordError,
-                      //   ),
-                      // ),
                     ],
                   );
                 },
