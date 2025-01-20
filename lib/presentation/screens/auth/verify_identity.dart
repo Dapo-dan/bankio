@@ -1,5 +1,6 @@
 import 'package:bankio/presentation/screens/auth/proof_of_residency.dart';
 import 'package:bankio/presentation/widgets/button.dart';
+import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class VerifyIdentityPage extends StatelessWidget {
@@ -7,6 +8,8 @@ class VerifyIdentityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(color: Theme.of(context).iconTheme.color),
@@ -18,26 +21,25 @@ class VerifyIdentityPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            verticalSpaceLarge(),
             Text(
-              "Let’s verify your identity",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
+              "Let's verify your identity",
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
-            const SizedBox(height: 10),
+            verticalSpaceSmall(),
             Text(
               "We are required to verify your identity before you can use the application. Your information will be encrypted and stored securely.",
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
-            const SizedBox(height: 20),
+            verticalSpaceMedium(),
             Center(
-              child: Image.asset(
-                'assets/images/identity_verification.png',
-                height: 200,
+              child: Icon(
+                Icons.calendar_view_day_rounded,
+                size: 400,
+                color: theme.colorScheme.primaryContainer,
               ),
             ),
-            const SizedBox(height: 40),
+            const Spacer(),
             AppButton(
               onTap: () {
                 Navigator.push(
@@ -49,6 +51,7 @@ class VerifyIdentityPage extends StatelessWidget {
               },
               title: "VERIFY IDENTITY",
             ),
+            verticalSpaceLarge(),
           ],
         ),
       ),

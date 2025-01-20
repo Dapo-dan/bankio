@@ -1,6 +1,7 @@
 import 'package:bankio/blocs/auth_bloc/signup/signup_bloc.dart';
 import 'package:bankio/presentation/screens/auth/verify_identity.dart';
 import 'package:bankio/presentation/widgets/button.dart';
+import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,9 +18,11 @@ class GetStartedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(color: Theme.of(context).iconTheme.color),
+        leading: BackButton(color: theme.iconTheme.color),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -36,17 +39,15 @@ class GetStartedPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                verticalSpaceLarge(),
                 Text(
                   "Get started",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.headlineLarge,
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Tell us the main reason for using the FintechX application please.",
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  "Tell us the main reason for using Bankio please.",
+                  style: theme.textTheme.bodySmall,
                 ),
                 const SizedBox(height: 20),
                 Expanded(
@@ -60,37 +61,33 @@ class GetStartedPage extends StatelessWidget {
                               .add(SelectOption(options[index]));
                         },
                         child: Container(
-                          margin: const EdgeInsets.only(bottom: 12),
+                          margin: const EdgeInsets.only(bottom: 20),
                           padding: const EdgeInsets.symmetric(
                               vertical: 16, horizontal: 12),
                           decoration: BoxDecoration(
-                            color: selectedOption == options[index]
-                                ? Theme.of(context)
-                                    .primaryColor
-                                    .withValues(alpha: 0.2)
-                                : Theme.of(context).cardColor,
+                            color: theme.cardColor,
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: selectedOption == options[index]
-                                  ? Theme.of(context).primaryColor
-                                  : Theme.of(context).dividerColor,
-                            ),
                           ),
                           child: Row(
                             children: [
-                              Icon(
-                                selectedOption == options[index]
-                                    ? Icons.check_circle
-                                    : Icons.circle_outlined,
-                                color: selectedOption == options[index]
-                                    ? Theme.of(context).primaryColor
-                                    : Theme.of(context).dividerColor,
+                              Checkbox(
+                                value: selectedOption == options[index],
+                                onChanged: (bool? value) {
+                                  if (value == true) {
+                                    context
+                                        .read<SignupBloc>()
+                                        .add(SelectOption(options[index]));
+                                  }
+                                },
+                                activeColor: theme.primaryColor,
                               ),
-                              const SizedBox(width: 12),
+                              horizontalSpaceSmall(),
                               Expanded(
                                 child: Text(
                                   options[index],
-                                  style: Theme.of(context).textTheme.bodyLarge,
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
@@ -108,6 +105,9 @@ class GetStartedPage extends StatelessWidget {
                           context.read<SignupBloc>().add(SkipStep());
                         },
                         title: "SKIP",
+                        textColor: theme.colorScheme.onSecondaryContainer,
+                        buttonColor: theme.colorScheme.primaryContainer,
+                        borderColor: theme.colorScheme.secondaryContainer,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -126,7 +126,7 @@ class GetStartedPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                verticalSpaceLarge(),
               ],
             ),
           );

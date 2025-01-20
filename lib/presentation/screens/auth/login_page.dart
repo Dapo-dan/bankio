@@ -1,4 +1,5 @@
 import 'package:bankio/blocs/auth_bloc/login_bloc/login_bloc.dart';
+import 'package:bankio/presentation/screens/auth/get_started.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:bankio/presentation/widgets/social_login_button.dart';
 import 'package:bankio/presentation/widgets/text_input_field.dart';
@@ -29,7 +30,7 @@ class LoginPage extends StatelessWidget {
               verticalSpaceLarge(),
               Text(
                 "Let's you in",
-                style: theme.textTheme.headlineMedium,
+                style: theme.textTheme.headlineLarge,
                 textAlign: TextAlign.center,
               ),
               verticalSpaceLarge(),
@@ -88,7 +89,14 @@ class LoginPage extends StatelessWidget {
                     style: theme.textTheme.bodySmall,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => GetStartedPage(),
+                        ),
+                      );
+                    },
                     child: Text(
                       "Sign up",
                       style: theme.textTheme.bodySmall?.copyWith(
@@ -230,7 +238,14 @@ class SignInPage extends StatelessWidget {
                     style: theme.textTheme.bodySmall,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => GetStartedPage(),
+                        ),
+                      );
+                    },
                     child: Text(
                       "Sign up",
                       style: theme.textTheme.bodySmall?.copyWith(

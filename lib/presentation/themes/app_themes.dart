@@ -5,7 +5,7 @@ class AppThemes {
     brightness: Brightness.light,
     primaryColor: const Color(0xFF1573FE),
     scaffoldBackgroundColor: Colors.white,
-    cardColor: Colors.white,
+    cardColor: const Color(0xFFA1C7FF),
     appBarTheme: const AppBarTheme(
       color: Color(0xFF1573FE),
       iconTheme: IconThemeData(color: Colors.white),
@@ -22,6 +22,8 @@ class AppThemes {
       onSurface: Color(0xFFDFF1FF), //BG-4
       primaryContainer: Color(0xFFD9D9D9), //Grey-4
       onPrimaryContainer: Colors.white,
+      secondaryContainer: Color(0xFF9E9E9E), //Grey-6
+      onSecondaryContainer: Colors.black,
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
@@ -85,7 +87,7 @@ class AppThemes {
     brightness: Brightness.dark,
     primaryColor: const Color(0xFF89B9FF),
     scaffoldBackgroundColor: const Color(0xFF202020),
-    cardColor: Colors.grey[800],
+    cardColor: const Color(0xFF082E66),
     appBarTheme: const AppBarTheme(
       color: Colors.deepOrange,
       iconTheme: IconThemeData(color: Colors.black),
@@ -102,6 +104,8 @@ class AppThemes {
       onSurface: Color(0xFF103E63), //BG-4
       primaryContainer: Color(0xFF767676), //Grey-4
       onPrimaryContainer: Colors.black,
+      secondaryContainer: Color(0xFFBDBDBD), //Grey-6
+      onSecondaryContainer: Colors.white,
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(

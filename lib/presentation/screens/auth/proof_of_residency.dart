@@ -1,4 +1,5 @@
 import 'package:bankio/presentation/widgets/button.dart';
+import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class ProofOfResidencyPage extends StatefulWidget {
@@ -19,6 +20,8 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(color: Theme.of(context).iconTheme.color),
@@ -30,50 +33,47 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            verticalSpaceLarge(),
             Text(
               "Proof of Residency",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Text(
-                  "Nationality",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                const Spacer(),
-                TextButton(
-                  onPressed: () {
-                    // Handle change nationality
-                  },
-                  child: const Text("Change"),
-                ),
-              ],
+            verticalSpaceMedium(),
+            Text(
+              "Nationality",
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            const SizedBox(height: 10),
+            verticalSpaceSmall(),
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
+                color: theme.cardColor,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.flag, size: 24),
-                  SizedBox(width: 12),
-                  Text("United States"),
+                  const Icon(Icons.flag, size: 24),
+                  horizontalSpaceSmall(),
+                  Text(
+                    "United States",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {
+                      // Handle change nationality
+                    },
+                    child: const Text("Change"),
+                  ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            verticalSpaceMedium(),
             Text(
               "Verification method",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-            const SizedBox(height: 10),
+            verticalSpaceSmall(),
             Column(
               children: verificationMethods.map((method) {
                 return GestureDetector(
@@ -81,20 +81,12 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
                     setState(() => selectedVerificationMethod = method);
                   },
                   child: Container(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 25, horizontal: 20),
                     decoration: BoxDecoration(
-                      color: selectedVerificationMethod == method
-                          ? Theme.of(context)
-                              .primaryColor
-                              .withValues(alpha: 0.2)
-                          : Theme.of(context).cardColor,
+                      color: theme.cardColor,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: selectedVerificationMethod == method
-                            ? Theme.of(context).primaryColor
-                            : Theme.of(context).dividerColor,
-                      ),
                     ),
                     child: Row(
                       children: [
@@ -104,10 +96,15 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
                               : Icons.radio_button_unchecked,
                           color: selectedVerificationMethod == method
                               ? Theme.of(context).primaryColor
-                              : Theme.of(context).dividerColor,
+                              : Theme.of(context)
+                                  .primaryColor
+                                  .withValues(alpha: 0.2),
                         ),
-                        const SizedBox(width: 12),
-                        Text(method),
+                        horizontalSpaceMedium(),
+                        Text(
+                          method,
+                          style: theme.textTheme.bodyLarge,
+                        ),
                       ],
                     ),
                   ),
@@ -123,9 +120,12 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
                     onTap: () {
                       // Handle skip action
                     },
+                    textColor: theme.colorScheme.onSecondaryContainer,
+                    buttonColor: theme.colorScheme.primaryContainer,
+                    borderColor: theme.colorScheme.secondaryContainer,
                   ),
                 ),
-                const SizedBox(width: 12),
+                horizontalSpaceSmall(),
                 Expanded(
                   child: AppButton(
                     title: "CONTINUE",
@@ -136,6 +136,7 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
                 ),
               ],
             ),
+            verticalSpaceLarge(),
           ],
         ),
       ),

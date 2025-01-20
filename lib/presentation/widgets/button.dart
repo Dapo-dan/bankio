@@ -70,7 +70,9 @@ class AppButton extends StatelessWidget {
                   )
                 : Text(
                     title,
-                    style: theme.textTheme.labelLarge,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: textColor ?? theme.colorScheme.onPrimaryContainer,
+                    ),
                   ),
           ),
         ),
