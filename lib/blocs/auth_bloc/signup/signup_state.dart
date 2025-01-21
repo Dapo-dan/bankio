@@ -27,3 +27,37 @@ class ProofOfResidencySubmitted extends SignupState {}
 // State when a step is skipped
 class StepSkipped extends SignupState {}
 
+class ProofOfResidencyState extends SignupState {
+  final String method;
+
+  ProofOfResidencyState(this.method);
+
+  @override
+  List<Object?> get props => [method];
+}
+
+class PhotoCaptureState extends SignupState {
+  final String photoPath;
+
+  PhotoCaptureState(this.photoPath);
+
+  @override
+  List<Object?> get props => [photoPath];
+}
+
+class ProfileCompletionState extends SignupState {
+  final String fullName;
+  final String nickName;
+  final String email;
+  final String phone;
+
+  ProfileCompletionState({
+    required this.fullName,
+    required this.nickName,
+    required this.email,
+    required this.phone,
+  });
+
+  @override
+  List<Object?> get props => [fullName, nickName, email, phone];
+}

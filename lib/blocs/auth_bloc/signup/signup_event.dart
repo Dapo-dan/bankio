@@ -23,3 +23,39 @@ class SubmitProofOfResidency extends SignupEvent {}
 
 // Skip any step
 class SkipStep extends SignupEvent {}
+
+// User selects a proof of residency method
+class ProofOfResidencySelected extends SignupEvent {
+  final String method;
+
+  ProofOfResidencySelected(this.method);
+
+  @override
+  List<Object?> get props => [method];
+}
+
+class PhotoCaptured extends SignupEvent {
+  final String photoPath;
+
+  PhotoCaptured(this.photoPath);
+
+  @override
+  List<Object?> get props => [photoPath];
+}
+
+class ProfileSubmitted extends SignupEvent {
+  final String fullName;
+  final String nickName;
+  final String email;
+  final String phone;
+
+  ProfileSubmitted({
+    required this.fullName,
+    required this.nickName,
+    required this.email,
+    required this.phone,
+  });
+
+  @override
+  List<Object?> get props => [fullName, nickName, email, phone];
+}
