@@ -147,8 +147,9 @@ class SignInPage extends StatelessWidget {
                       TextInputForm(
                         hint: "Email",
                         errorText: state.emailError,
-                        onChanged: (email) =>
-                            context.read<LoginBloc>().add(EmailChanged(email)),
+                        onChanged: (email) => context
+                            .read<LoginBloc>()
+                            .add(EmailChanged(email.trim().toLowerCase())),
                       ),
                       const SizedBox(height: 16),
                       TextInputForm(

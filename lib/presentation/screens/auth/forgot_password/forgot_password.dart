@@ -44,7 +44,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         errorText: state.emailError,
                         onChanged: (email) => context
                             .read<ForgotPasswordBloc>()
-                            .add(EmailChanged(email)),
+                            .add(EmailChanged(email.trim().toLowerCase())),
                       ),
                     ],
                   );
