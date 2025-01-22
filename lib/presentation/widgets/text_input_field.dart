@@ -91,7 +91,7 @@ class _TextInputFormState extends State<TextInputForm> {
               cursorColor: theme.primaryColor,
               decoration: InputDecoration(
                 errorText: widget.errorText,
-                errorStyle: theme.textTheme.bodyMedium?.copyWith(
+                errorStyle: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.error,
                 ),
                 filled: true,
@@ -102,7 +102,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      10,
+                      8,
                     ),
                   ),
                 ),
@@ -112,7 +112,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      10,
+                      8,
                     ),
                   ),
                 ),
@@ -122,7 +122,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      10,
+                      8,
                     ),
                   ),
                 ),
@@ -132,7 +132,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      10,
+                      8,
                     ),
                   ),
                 ),
@@ -142,7 +142,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      24,
+                      8,
                     ),
                   ),
                 ),
@@ -169,7 +169,7 @@ class _TextInputFormState extends State<TextInputForm> {
                 ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16.0,
-                  vertical: 16.0,
+                  vertical: 12.0,
                 ),
               ),
             ),

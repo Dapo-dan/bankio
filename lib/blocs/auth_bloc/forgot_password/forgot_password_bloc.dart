@@ -9,7 +9,13 @@ class ForgotPasswordBloc
     extends Bloc<ForgotPasswordEvent, ForgotPasswordState> {
   ForgotPasswordBloc() : super(const ForgotPasswordState()) {
     on<EmailChanged>((event, emit) {
-      final emailError = event.email.contains('@') ? null : "Invalid email";
+      const String emailRegex =
+          '[a-zA-Z0-9+._%-+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+';
+      final regExp = RegExp(emailRegex);
+      final emailError =
+          regExp.hasMatch(event.email) || event.email.contains(' ')
+              ? null
+              : "Invalid email";
       emit(state.copyWith(email: event.email, emailError: emailError));
     });
 

@@ -5,8 +5,8 @@ import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class VerityEmailScreen extends StatelessWidget {
+  const VerityEmailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
