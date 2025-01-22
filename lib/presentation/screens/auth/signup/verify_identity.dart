@@ -1,4 +1,4 @@
-import 'package:bankio/presentation/screens/auth/proof_of_residency.dart';
+import 'package:bankio/presentation/screens/auth/signup/proof_of_residency.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';

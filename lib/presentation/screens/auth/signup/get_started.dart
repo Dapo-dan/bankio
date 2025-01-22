@@ -1,5 +1,5 @@
 import 'package:bankio/blocs/auth_bloc/signup/signup_bloc.dart';
-import 'package:bankio/presentation/screens/auth/verify_identity.dart';
+import 'package:bankio/presentation/screens/auth/signup/verify_identity.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
 import 'package:bankio/blocs/auth_bloc/signup/signup_bloc.dart';
-import 'package:bankio/presentation/screens/auth/fill_profile_page.dart';
+import 'package:bankio/presentation/screens/auth/signup/fill_profile_page.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
