@@ -26,14 +26,17 @@ class VerityEmailScreen extends StatelessWidget {
             children: [
               verticalSpaceLarge(),
               Text(
-                "Forgot Your\nPassword?",
+                "Enter Verification Code",
                 style: theme.textTheme.headlineMedium,
               ),
               verticalSpaceMedium(),
-              Text(
-                "No worries, you just need to type your email address oor username and we willl send the verification code.",
-                style: theme.textTheme.bodySmall,
-              ),
+              BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+                  builder: (context, state) {
+                return Text(
+                  "Enter the code we sent to your email ${state.email}",
+                  style: theme.textTheme.bodySmall,
+                );
+              }),
               verticalSpaceMedium(),
               BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
                 builder: (context, state) {
