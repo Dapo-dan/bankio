@@ -1,6 +1,6 @@
-import 'package:bankio/blocs/auth_bloc/forgot_password/forgot_password_bloc.dart';
-import 'package:bankio/blocs/auth_bloc/login_bloc/login_bloc.dart';
-import 'package:bankio/blocs/auth_bloc/signup/signup_bloc.dart';
+import 'package:bankio/logic/auth/forgot_password/forgot_password_bloc.dart';
+import 'package:bankio/logic/auth/login/login_bloc.dart';
+import 'package:bankio/logic/auth/signup/signup_bloc.dart';
 import 'package:bankio/presentation/screens/auth/login/login_page.dart';
 import 'package:bankio/presentation/themes/app_themes.dart';
 import 'package:flutter/material.dart';

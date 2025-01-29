@@ -17,12 +17,6 @@ class ForgotPasswordBloc
     on<Submitted>((event, emit) {
       // Add authentication logic here
       if (state.emailError == null) {
-         Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const ForgotPasswordScreen(),
-                        ),
-                      );
         if (kDebugMode) {
           print("Send verification code: ${state.email}");
         }

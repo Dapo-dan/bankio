@@ -1,4 +1,4 @@
-import 'package:bankio/blocs/auth_bloc/login_bloc/login_bloc.dart';
+import 'package:bankio/logic/auth/login/login_bloc.dart';
 import 'package:bankio/presentation/screens/auth/forgot_password/forgot_password.dart';
 import 'package:bankio/presentation/screens/auth/signup/get_started.dart';
 import 'package:bankio/presentation/widgets/button.dart';

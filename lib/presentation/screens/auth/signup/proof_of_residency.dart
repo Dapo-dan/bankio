@@ -1,4 +1,4 @@
-import 'package:bankio/blocs/auth_bloc/signup/signup_bloc.dart';
+import 'package:bankio/logic/auth/signup/signup_bloc.dart';
 import 'package:bankio/presentation/screens/auth/signup/photo_id_page.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:bankio/utils/const.dart';
