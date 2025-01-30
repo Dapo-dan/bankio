@@ -43,6 +43,29 @@ class PhotoCaptured extends SignupEvent {
   List<Object?> get props => [photoPath];
 }
 
+class SFullNameChanged extends SignupEvent {
+  final String fullName;
+  SFullNameChanged({required this.fullName});
+}
+
+// Last Name Changed!
+class SNickNameChanged extends SignupEvent {
+  final String nickName;
+  SNickNameChanged({required this.nickName});
+}
+
+// Email Changed!
+class SEmailChanged extends SignupEvent {
+  final String email;
+  SEmailChanged({required this.email});
+}
+
+// Phone Number Changed!
+class SPhoneNumberChanged extends SignupEvent {
+  final String phoneNumber;
+  SPhoneNumberChanged({required this.phoneNumber});
+}
+
 class ProfileSubmitted extends SignupEvent {
   final String fullName;
   final String nickName;

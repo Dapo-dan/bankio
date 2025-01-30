@@ -2,14 +2,18 @@ part of 'login_bloc.dart';
 
 class LoginState extends Equatable {
   final String email;
+  final TextEditingController? emailController;
   final String password;
+  final TextEditingController? passwordController;
   final bool rememberMe;
   final String? emailError;
   final String? passwordError;
 
   const LoginState({
     this.email = '',
+    this.emailController,
     this.password = '',
+    this.passwordController,
     this.rememberMe = false,
     this.emailError,
     this.passwordError,
@@ -24,14 +28,18 @@ class LoginState extends Equatable {
 
   LoginState copyWith({
     String? email,
-    String? password,
-    bool? rememberMe,
     String? emailError,
+    TextEditingController? emailController,
+    String? password,
     String? passwordError,
+    TextEditingController? passwordController,
+    bool? rememberMe,
   }) {
     return LoginState(
       email: email ?? this.email,
+      emailController: emailController ?? this.emailController,
       password: password ?? this.password,
+      passwordController: passwordController ?? this.passwordController,
       rememberMe: rememberMe ?? this.rememberMe,
       emailError: emailError,
       passwordError: passwordError,
@@ -39,6 +47,13 @@ class LoginState extends Equatable {
   }
 
   @override
-  List<Object?> get props =>
-      [email, password, rememberMe, emailError, passwordError];
+  List<Object?> get props => [
+        email,
+        emailController,
+        password,
+        passwordController,
+        rememberMe,
+        emailError,
+        passwordError,
+      ];
 }
