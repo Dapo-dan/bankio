@@ -45,7 +45,9 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
         final currentState = state as ProfileCompletionState;
         final error = FullNameValidator.validateFullName(event.fullName);
         emit(currentState.copyWith(
-            fullName: event.fullName, fullNameError: error));
+            fullName: event.fullName,
+            fullNameError: error,
+            fullNameTC: TextEditingController(text: event.fullName)));
       }
     });
 
@@ -81,16 +83,58 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
 
     /// Handle profile submission
     on<ProfileSubmitted>((event, emit) {
-      emit(ProfileCompletionState(
-        fullName: event.fullName,
-        nickName: event.nickName,
-        email: event.email,
-        phone: event.phone,
-        fullNameTC: TextEditingController(text: event.fullName),
-        nickNameTC: TextEditingController(text: event.nickName),
-        emailTC: TextEditingController(text: event.email),
-        phoneTC: TextEditingController(text: event.phone),
-      ));
+      final fullNameError = FullNameValidator.validateFullName(event.fullName);
+      final nickNameError = UsernameValidator.validateUsername(event.nickName);
+      final emailError = EmailValidator.validateEmail(event.email);
+      final phoneError = PhoneNumberValidator.validatePhoneNumber(event.phone);
+
+      if (fullNameError == null &&
+          nickNameError == null &&
+          emailError == null &&
+          phoneError == null) {
+        emit(ProfileCompletionState(
+          fullName: event.fullName,
+          nickName: event.nickName,
+          email: event.email,
+          phone: event.phone,
+          fullNameTC: TextEditingController(text: event.fullName),
+          nickNameTC: TextEditingController(text: event.nickName),
+          emailTC: TextEditingController(text: event.email),
+          phoneTC: TextEditingController(text: event.phone),
+          formStatus: FSSFormSubmitting(),
+        ));
+
+        // Simulate API call (replace with real API logic)
+        Future.delayed(const Duration(seconds: 2), () {
+          emit(ProfileCompletionState(
+            fullName: event.fullName,
+            nickName: event.nickName,
+            email: event.email,
+            phone: event.phone,
+            fullNameTC: TextEditingController(text: event.fullName),
+            nickNameTC: TextEditingController(text: event.nickName),
+            emailTC: TextEditingController(text: event.email),
+            phoneTC: TextEditingController(text: event.phone),
+            formStatus: FSSSubmissionSuccess(),
+          ));
+        });
+      } else {
+        emit(ProfileCompletionState(
+          fullName: event.fullName,
+          nickName: event.nickName,
+          email: event.email,
+          phone: event.phone,
+          fullNameError: fullNameError,
+          nickNameError: nickNameError,
+          emailError: emailError,
+          phoneError: phoneError,
+          fullNameTC: TextEditingController(text: event.fullName),
+          nickNameTC: TextEditingController(text: event.nickName),
+          emailTC: TextEditingController(text: event.email),
+          phoneTC: TextEditingController(text: event.phone),
+          formStatus: FSSSubmissionFailed(exception: "Validation failed"),
+        ));
+      }
     });
   }
 }
