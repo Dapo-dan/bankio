@@ -87,9 +87,9 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
                           .add(ProofOfResidencySelected(method));
                     },
                     child: Container(
-                      margin: const EdgeInsets.only(bottom: 20),
+                      margin: const EdgeInsets.only(bottom: 10),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 25, horizontal: 20),
+                          vertical: 20, horizontal: 20),
                       decoration: BoxDecoration(
                         color: theme.cardColor,
                         borderRadius: BorderRadius.circular(8),

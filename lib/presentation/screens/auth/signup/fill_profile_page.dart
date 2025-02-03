@@ -17,33 +17,35 @@ class FillProfilePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Fill your profile",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "Don't worry, you can always change it later.",
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 20),
-            _fullNameInput(),
-            const SizedBox(height: 12),
-            _nickNameInput(),
-            const SizedBox(height: 12),
-            _emailInput(),
-            const SizedBox(height: 12),
-            _phoneInput(),
-            const Spacer(),
-            _submit(),
-            const SizedBox(height: 20),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Fill your profile",
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Don't worry, you can always change it later.",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const SizedBox(height: 20),
+              _fullNameInput(),
+              const SizedBox(height: 12),
+              _nickNameInput(),
+              const SizedBox(height: 12),
+              _emailInput(),
+              const SizedBox(height: 12),
+              _phoneInput(),
+              const SizedBox(height: 20),
+              _submit(),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

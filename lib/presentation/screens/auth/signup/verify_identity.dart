@@ -35,7 +35,7 @@ class VerifyIdentityPage extends StatelessWidget {
             Center(
               child: Icon(
                 Icons.calendar_view_day_rounded,
-                size: 400,
+                size: 300,
                 color: theme.colorScheme.primaryContainer,
               ),
             ),

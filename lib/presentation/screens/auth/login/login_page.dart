@@ -25,89 +25,91 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: BODY_PADDING),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              verticalSpaceLarge(),
-              Text(
-                "Let's you in",
-                style: theme.textTheme.headlineLarge,
-                textAlign: TextAlign.center,
-              ),
-              verticalSpaceLarge(),
-              SocialLoginButton(
-                label: "Continue with Facebook",
-                icon: ImagePath.facebook,
-                color: theme.colorScheme.surface,
-              ),
-              verticalSpaceMedium(),
-              SocialLoginButton(
-                label: "Continue with Google",
-                icon: ImagePath.google,
-                color: theme.colorScheme.onPrimary,
-              ),
-              verticalSpaceMedium(),
-              SocialLoginButton(
-                label: "Continue with Apple",
-                icon: ImagePath.apple,
-                color: theme.colorScheme.secondary,
-              ),
-              verticalSpaceLarge(),
-              Row(
-                children: [
-                  const Expanded(child: Divider(color: Colors.grey)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      "or",
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpaceLarge(),
+                Text(
+                  "Let's you in",
+                  style: theme.textTheme.headlineLarge,
+                  textAlign: TextAlign.center,
+                ),
+                verticalSpaceLarge(),
+                SocialLoginButton(
+                  label: "Continue with Facebook",
+                  icon: ImagePath.facebook,
+                  color: theme.colorScheme.surface,
+                ),
+                verticalSpaceMedium(),
+                SocialLoginButton(
+                  label: "Continue with Google",
+                  icon: ImagePath.google,
+                  color: theme.colorScheme.onPrimary,
+                ),
+                verticalSpaceMedium(),
+                SocialLoginButton(
+                  label: "Continue with Apple",
+                  icon: ImagePath.apple,
+                  color: theme.colorScheme.secondary,
+                ),
+                verticalSpaceLarge(),
+                Row(
+                  children: [
+                    const Expanded(child: Divider(color: Colors.grey)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        "or",
+                        style: theme.textTheme.bodySmall,
+                      ),
+                    ),
+                    const Expanded(child: Divider(color: Colors.grey)),
+                  ],
+                ),
+                verticalSpaceLarge(),
+                AppButton(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => BlocProvider(
+                          create: (_) => LoginBloc(),
+                          child: const SignInPage(),
+                        ),
+                      ),
+                    );
+                  },
+                  title: "SIGN IN WITH PASSWORD",
+                ),
+                verticalSpaceLarge(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account?",
                       style: theme.textTheme.bodySmall,
                     ),
-                  ),
-                  const Expanded(child: Divider(color: Colors.grey)),
-                ],
-              ),
-              verticalSpaceLarge(),
-              AppButton(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => BlocProvider(
-                        create: (_) => LoginBloc(),
-                        child: const SignInPage(),
-                      ),
-                    ),
-                  );
-                },
-                title: "SIGN IN WITH PASSWORD",
-              ),
-              verticalSpaceLarge(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account?",
-                    style: theme.textTheme.bodySmall,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => GetStartedPage(),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => GetStartedPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Sign up",
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.primaryColor,
                         ),
-                      );
-                    },
-                    child: Text(
-                      "Sign up",
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.primaryColor,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
