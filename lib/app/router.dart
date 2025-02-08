@@ -16,7 +16,7 @@ class AppRouter {
       GoRoute(path: '/signup/identity', builder: (context, state) => const VerifyIdentityPage()),
       GoRoute(path: '/signup/residency', builder: (context, state) => const ProofOfResidencyPage()),
       GoRoute(path: '/signup/photoid', builder: (context, state) => const PhotoIdPage()),
-      GoRoute(path: '/signup/profile', builder: (context, state) => FillProfilePage()),
+      GoRoute(path: '/signup/profile', builder: (context, state) => const FillProfilePage()),
       GoRoute(
           path: '/forgot-password',
           builder: (context, state) => const ForgotPasswordScreen()),

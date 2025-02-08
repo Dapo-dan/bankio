@@ -68,7 +68,7 @@ class PhotoIdPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => FillProfilePage(),
+                          builder: (_) => const FillProfilePage(),
                         ),
                       );
                     },
