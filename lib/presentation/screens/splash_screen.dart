@@ -1,7 +1,7 @@
-import 'package:bankio/presentation/screens/auth/login/login_page.dart';
 import 'package:bankio/presentation/widgets/button.dart';
 import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -53,14 +53,7 @@ class SplashScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: AppButton(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const LoginPage(),
-                      ),
-                    );
-                  },
+                  onTap: () => context.go('/login'),
                   title: 'GET STARTED',
                   buttonColor: theme.primaryColor,
                 ),

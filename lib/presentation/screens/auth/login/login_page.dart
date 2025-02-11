@@ -8,6 +8,7 @@ import 'package:bankio/utils/const.dart';
 import 'package:bankio/utils/image_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -74,7 +75,7 @@ class LoginPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) => BlocProvider(
-                          create: (_) => LoginBloc(),
+                          create: (_) => LoginBloc(GoRouter.of(context)),
                           child: const SignInPage(),
                         ),
                       ),

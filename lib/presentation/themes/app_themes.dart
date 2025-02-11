@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppThemes {
   static final ThemeData lightTheme = ThemeData(
@@ -7,6 +8,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     cardColor: const Color(0xFFA1C7FF),
     appBarTheme: const AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
       color: Color(0xFF1573FE),
       iconTheme: IconThemeData(color: Colors.white),
     ),
@@ -89,6 +91,7 @@ class AppThemes {
     scaffoldBackgroundColor: const Color(0xFF202020),
     cardColor: const Color(0xFF082E66),
     appBarTheme: const AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle.light,
       color: Colors.deepOrange,
       iconTheme: IconThemeData(color: Colors.black),
     ),

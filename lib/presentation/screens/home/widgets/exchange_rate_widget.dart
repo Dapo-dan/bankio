@@ -8,10 +8,26 @@ class ExchangeRateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Exchange Rates', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('Exchange Rates',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: theme.colorScheme.onSecondaryContainer,
+              ),
+            ),
+          ],
+        ),
         const SizedBox(height: 10),
         SizedBox(
           height: 80,
@@ -23,19 +39,43 @@ class ExchangeRateWidget extends StatelessWidget {
               return Container(
                 width: 140,
                 margin: const EdgeInsets.only(right: 16),
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.green[50],
-                  borderRadius: BorderRadius.circular(12),
+                  color: theme.colorScheme.onError,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(rate.currency, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                    Text('\$${rate.rate}', style: const TextStyle(fontSize: 16)),
-                    Text('${rate.percentageChange}%',
-                        style: TextStyle(
-                            color: rate.percentageChange >= 0 ? Colors.green : Colors.red)),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Text(
+                        rate.currency,
+                        style: theme.textTheme.bodySmall!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          '\$${rate.rate}',
+                          style: theme.textTheme.bodyMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${rate.percentageChange}%',
+                          style: theme.textTheme.bodySmall!.copyWith(
+                              color: rate.percentageChange >= 0
+                                  ? theme.colorScheme.onSecondary
+                                  : theme.colorScheme.error),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               );

@@ -8,14 +8,24 @@ class TransactionListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Transactions', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Text('See all', style: TextStyle(fontSize: 14, color: Colors.blue)),
+            const Text('Transactions',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: theme.colorScheme.onSecondaryContainer,
+              ),
+            ),
           ],
         ),
         ListView.builder(
@@ -26,18 +36,27 @@ class TransactionListWidget extends StatelessWidget {
             final transaction = transactions[index];
             return ListTile(
               leading: CircleAvatar(
-                backgroundColor: Colors.green[50],
-                child: Icon(transaction.icon == 'car'
-                    ? Icons.directions_car
-                    : transaction.icon == 'home'
-                        ? Icons.home
-                        : Icons.person),
+                backgroundColor: theme.colorScheme.onError,
+                child: Icon(
+                  transaction.icon == 'car'
+                      ? Icons.directions_car
+                      : transaction.icon == 'home'
+                          ? Icons.home
+                          : Icons.person,
+                  color: theme.colorScheme.onSecondaryContainer,
+                ),
               ),
-              title: Text(transaction.title),
-              subtitle: Text(transaction.time),
+              title: Text(
+                transaction.title,
+                style: theme.textTheme.titleSmall,
+              ),
+              subtitle: Text(
+                transaction.time,
+                style: theme.textTheme.bodySmall,
+              ),
               trailing: Text(
                 '\$${transaction.amount}',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: theme.textTheme.titleSmall,
               ),
             );
           },

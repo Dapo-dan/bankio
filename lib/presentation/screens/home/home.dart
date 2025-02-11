@@ -14,25 +14,24 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (_) => HomeBloc(HomeDataRepository())..add(LoadHomeData()),
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Home'),
-        ),
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is HomeLoaded) {
-              return SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    PaymentCardSlider(cards: state.cards),
-                    const SizedBox(height: 20),
-                    ExchangeRateWidget(rates: state.exchangeRates),
-                    const SizedBox(height: 20),
-                    TransactionListWidget(transactions: state.transactions),
-                  ],
+              return SafeArea(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      PaymentCardSlider(cards: state.cards),
+                      const SizedBox(height: 20),
+                      ExchangeRateWidget(rates: state.exchangeRates),
+                      const SizedBox(height: 20),
+                      TransactionListWidget(transactions: state.transactions),
+                    ],
+                  ),
                 ),
               );
             } else if (state is HomeError) {

@@ -3,12 +3,15 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginState()) {
+  final GoRouter router;
+
+  LoginBloc(this.router) : super(const LoginState()) {
     on<EmailChanged>((event, emit) {
       final emailError = EmailValidator.validateEmail(event.email);
       emit(state.copyWith(email: event.email, emailError: emailError));
@@ -28,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       // Add authentication logic here
       if (state.emailError == null && state.passwordError == null) {
         if (kDebugMode) {
-          print("Logging in with email: ${state.email}");
+          router.go('/home');
         }
       }
     });
