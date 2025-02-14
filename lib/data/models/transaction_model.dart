@@ -16,7 +16,8 @@ class TransactionModel {
 
 class TransactionModel2 {
   final String day;
+  final String date;
   final double amount;
 
-  TransactionModel2({required this.day, required this.amount});
+  TransactionModel2({required this.day,required this.date, required this.amount});
 }

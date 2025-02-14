@@ -59,81 +59,135 @@ class TransactionPage extends StatelessWidget {
   Widget _buildContent(TransactionsLoaded state, ThemeData theme) {
     return SafeArea(
       child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(state, theme),
-              verticalSpaceLarge(),
-              _buildBarChart(state, theme),
-              const SizedBox(height: 20),
-              _buildMonthlyBudget(theme),
-              const SizedBox(height: 20),
-              _buildCategorySummaries(theme),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildHeader(state, theme),
+            verticalSpaceSmall(),
+            _buildBarChart(state, theme),
+            verticalSpaceMedium(),
+            _buildMonthlyBudget(theme),
+            verticalSpaceMedium(),
+            _buildCategorySummaries(theme),
+          ],
         ),
       ),
     );
   }
 
   Widget _buildHeader(TransactionsLoaded state, ThemeData theme) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'Total Balance',
-          style: theme.textTheme.bodySmall,
-        ),
-        Text(
-          '\$${state.totalBalance.toStringAsFixed(1)}',
-          style: theme.textTheme.titleMedium,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Total Balance',
+            style: theme.textTheme.bodySmall,
+          ),
+          Text(
+            '\$${state.totalBalance.toStringAsFixed(1)}',
+            style: theme.textTheme.titleMedium,
+          ),
+        ],
+      ),
     );
   }
 
-  // DropdownButton<String>(
-  //   value: 'Week',
-  //   items: const [
-  //     DropdownMenuItem(value: 'Week', child: Text('Week')),
-  //     DropdownMenuItem(value: 'Month', child: Text('Month')),
-  //     DropdownMenuItem(value: 'Year', child: Text('Year')),
-  //   ],
-  //   onChanged: (value) {
-  //     // Handle time period change
-  //   },
-  // ),
-
   Widget _buildBarChart(TransactionsLoaded state, ThemeData theme) {
-    return SizedBox(
-      height: 200,
-      child: BarChart(
-        BarChartData(
-          alignment: BarChartAlignment.spaceAround,
-          maxY: state.transactions
-                  .map((t) => t.amount)
-                  .reduce((a, b) => a > b ? a : b) +
-              50,
-          barGroups: state.transactions
-              .asMap()
-              .entries
-              .map((entry) => _buildBarGroup(entry.key, entry.value.amount))
-              .toList(),
-          titlesData: FlTitlesData(
-            leftTitles: const AxisTitles(
-              sideTitles: SideTitles(showTitles: true),
+    return Container(
+      height: 450,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+          color: theme.colorScheme.secondary,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(
+              20,
             ),
-            bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                getTitlesWidget: (index, _) =>
-                    Text(state.transactions[index.toInt()].day),
+            topRight: Radius.circular(
+              20,
+            ),
+          )),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Transactions',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                  Text(
+                    '\$${state.transaction.toStringAsFixed(1)}',
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ],
+              ),
+              DropdownButton<String>(
+                value: 'Week',
+                style: theme.textTheme.bodySmall,
+                items: const [
+                  DropdownMenuItem(value: 'Week', child: Text('Week')),
+                  DropdownMenuItem(value: 'Month', child: Text('Month')),
+                  DropdownMenuItem(value: 'Year', child: Text('Year')),
+                ],
+                onChanged: (value) {
+                  // Handle time period change
+                },
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 350,
+            child: BarChart(
+              BarChartData(
+                borderData: FlBorderData(
+                  show: false,
+                ),
+                alignment: BarChartAlignment.spaceAround,
+                maxY: state.transactions
+                        .map((t) => t.amount)
+                        .reduce((a, b) => a > b ? a : b) +
+                    50,
+                barGroups: state.transactions
+                    .asMap()
+                    .entries
+                    .map((entry) =>
+                        _buildBarGroup(entry.key, entry.value.amount))
+                    .toList(),
+                titlesData: FlTitlesData(
+                  leftTitles: const AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: false,
+                    ),
+                  ),
+                  rightTitles: const AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: false,
+                    ),
+                  ),
+                  topTitles: const AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: false,
+                    ),
+                  ),
+                  bottomTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: (index, _) =>
+                          Text(state.transactions[index.toInt()].day),
+                    ),
+                  ),
+                ),
+                gridData: const FlGridData(show: false),
+                groupsSpace: 30,
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -142,13 +196,21 @@ class TransactionPage extends StatelessWidget {
     return BarChartGroupData(
       x: x,
       barRods: [
-        BarChartRodData(toY: y, color: Colors.black, width: 16),
+        BarChartRodData(
+          toY: y,
+          color: Colors.black,
+          width: 30,
+          borderRadius: BorderRadius.circular(
+            10,
+          ),
+        ),
       ],
     );
   }
 
   Widget _buildMonthlyBudget(ThemeData theme) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20.0),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
@@ -200,13 +262,17 @@ class TransactionPage extends StatelessWidget {
   }
 
   Widget _buildCategorySummaries(ThemeData theme) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _buildCategoryCard(
-            'Food & Restaurants', '\$890.12', Icons.shopping_cart, theme),
-        _buildCategoryCard('Tickets & Journey', '\$190.12', Icons.train, theme),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildCategoryCard(
+              'Food & Restaurants', '\$890.12', Icons.shopping_cart, theme),
+          _buildCategoryCard(
+              'Tickets & Journey', '\$190.12', Icons.train, theme),
+        ],
+      ),
     );
   }
 
@@ -214,7 +280,7 @@ class TransactionPage extends StatelessWidget {
       String title, String amount, IconData icon, ThemeData theme) {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8),
+        margin: const EdgeInsets.only(right: 20),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: theme.colorScheme.onPrimary,

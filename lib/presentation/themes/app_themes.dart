@@ -11,6 +11,7 @@ class AppThemes {
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       color: Color(0xFF1573FE),
       iconTheme: IconThemeData(color: Colors.white),
+      elevation: 0,
     ),
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
@@ -94,6 +95,7 @@ class AppThemes {
       systemOverlayStyle: SystemUiOverlayStyle.light,
       color: Colors.deepOrange,
       iconTheme: IconThemeData(color: Colors.black),
+      elevation: 0,
     ),
     colorScheme: const ColorScheme(
       brightness: Brightness.dark,
