@@ -1,5 +1,5 @@
 import 'package:bankio/data/repositories/home_data_repository.dart';
-import 'package:bankio/logic/home/home_bloc.dart';
+import 'package:bankio/logic/home_bloc/home_bloc.dart';
 import 'package:bankio/presentation/screens/home/widgets/exchange_rate_widget.dart';
 import 'package:bankio/presentation/screens/home/widgets/payment_card_slider.dart';
 import 'package:bankio/presentation/screens/home/widgets/transaction_list_widget.dart';

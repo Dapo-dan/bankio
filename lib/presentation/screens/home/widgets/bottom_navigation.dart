@@ -1,3 +1,4 @@
+import 'package:bankio/presentation/screens/home/feeds_screen.dart';
 import 'package:bankio/presentation/screens/home/home.dart';
 import 'package:bankio/presentation/screens/home/transactions_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const TransactionPage(),
-    const Center(child: Text('Feeds Screen')),
+    const FeedScreen(),
     const HomePage(),
     const Center(child: Text('Wallet Screen')),
     const Center(child: Text('Profile Screen')),
