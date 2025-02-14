@@ -35,6 +35,7 @@ class TransactionListWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             final transaction = transactions[index];
             return ListTile(
+              minVerticalPadding: 15,
               leading: CircleAvatar(
                 backgroundColor: theme.colorScheme.onError,
                 child: Icon(
@@ -54,9 +55,17 @@ class TransactionListWidget extends StatelessWidget {
                 transaction.time,
                 style: theme.textTheme.bodySmall,
               ),
-              trailing: Text(
-                '\$${transaction.amount}',
-                style: theme.textTheme.titleSmall,
+              trailing: Column(
+                children: [
+                  Text(
+                    '\$${transaction.amount}',
+                    style: theme.textTheme.titleSmall,
+                  ),
+                  Text(
+                    '${transaction.percentageChange} %',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ],
               ),
             );
           },

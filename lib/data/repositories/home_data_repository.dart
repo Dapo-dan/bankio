@@ -24,6 +24,7 @@ class HomeDataRepository {
     return [
       ExchangeRateModel(currency: 'AUD', rate: 0.8, percentageChange: 4.5),
       ExchangeRateModel(currency: 'EUR', rate: 1.1, percentageChange: -1.3),
+      ExchangeRateModel(currency: 'USD', rate: 1.5, percentageChange: -10.3),
     ];
   }
 

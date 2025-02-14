@@ -79,7 +79,7 @@ class _TextInputFormState extends State<TextInputForm> {
               enabled: widget.enabled,
               controller: widget.controller,
               keyboardType: widget.keyboardType,
-              style: theme.textTheme.bodyMedium,
+              style: theme.textTheme.bodySmall,
               textCapitalization: widget.textCapitalization,
               validator: widget.validator,
               onChanged: widget.onChanged,
@@ -91,7 +91,7 @@ class _TextInputFormState extends State<TextInputForm> {
               cursorColor: theme.primaryColor,
               decoration: InputDecoration(
                 errorText: widget.errorText,
-                errorStyle: theme.textTheme.bodySmall?.copyWith(
+                errorStyle: theme.textTheme.labelLarge?.copyWith(
                   color: theme.colorScheme.error,
                 ),
                 filled: true,
@@ -164,7 +164,7 @@ class _TextInputFormState extends State<TextInputForm> {
                 prefixIcon: widget.prefixIcon,
                 hintText: widget.hint,
                 prefixText: widget.prefixText,
-                hintStyle: theme.textTheme.bodyMedium?.copyWith(
+                hintStyle: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.primaryContainer,
                 ),
                 contentPadding: const EdgeInsets.symmetric(

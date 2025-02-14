@@ -5,13 +5,14 @@ import 'package:bankio/presentation/screens/auth/signup/get_started.dart';
 import 'package:bankio/presentation/screens/auth/signup/photo_id_page.dart';
 import 'package:bankio/presentation/screens/auth/signup/proof_of_residency.dart';
 import 'package:bankio/presentation/screens/auth/signup/verify_identity.dart';
-import 'package:bankio/presentation/screens/home/home.dart';
+import 'package:bankio/presentation/screens/home/transactions_screen.dart';
+import 'package:bankio/presentation/screens/home/widgets/bottom_navigation.dart';
 import 'package:bankio/presentation/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/home',
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
       GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
@@ -31,7 +32,10 @@ class AppRouter {
       GoRoute(
           path: '/forgot-password',
           builder: (context, state) => const ForgotPasswordScreen()),
-      GoRoute(path: '/home', builder: (context, state) => const HomePage()),
+      GoRoute(path: '/home', builder: (context, state) => const MainScreen()),
+      GoRoute(
+          path: '/transations',
+          builder: (context, state) => const TransactionPage()),
     ],
   );
 }

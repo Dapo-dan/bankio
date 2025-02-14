@@ -16,8 +16,10 @@ class ExchangeRateWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Exchange Rates',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const Text(
+              'Exchange Rates',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             IconButton(
               onPressed: () {},
               icon: Icon(
@@ -37,7 +39,7 @@ class ExchangeRateWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               final rate = rates[index];
               return Container(
-                width: 140,
+                width: 180,
                 margin: const EdgeInsets.only(right: 16),
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -49,7 +51,8 @@ class ExchangeRateWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 15),
                       decoration: BoxDecoration(
                         color: theme.colorScheme.primaryContainer,
                         borderRadius: BorderRadius.circular(5),
@@ -61,18 +64,28 @@ class ExchangeRateWidget extends StatelessWidget {
                       ),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           '\$${rate.rate}',
                           style: theme.textTheme.bodyMedium!
                               .copyWith(fontWeight: FontWeight.bold),
                         ),
-                        Text(
-                          '${rate.percentageChange}%',
-                          style: theme.textTheme.bodySmall!.copyWith(
-                              color: rate.percentageChange >= 0
-                                  ? theme.colorScheme.onSecondary
-                                  : theme.colorScheme.error),
+                        Row(
+                          children: [
+                            Text(
+                              '${rate.percentageChange}%',
+                              style: theme.textTheme.bodySmall!.copyWith(
+                                  color: rate.percentageChange >= 0
+                                      ? theme.colorScheme.onSecondary
+                                      : theme.colorScheme.error),
+                            ),
+                            Icon(
+                              rate.percentageChange >= 0
+                                  ? Icons.keyboard_double_arrow_up_rounded
+                                  : Icons.keyboard_double_arrow_down_rounded,
+                            )
+                          ],
                         ),
                       ],
                     ),

@@ -59,7 +59,7 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
                     horizontalSpaceSmall(),
                     Text(
                       "United States",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const Spacer(),
                     TextButton(
@@ -109,7 +109,7 @@ class _ProofOfResidencyPageState extends State<ProofOfResidencyPage> {
                           horizontalSpaceMedium(),
                           Text(
                             method,
-                            style: theme.textTheme.bodyLarge,
+                            style: theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),

@@ -3,6 +3,7 @@ import 'package:bankio/logic/home/home_bloc.dart';
 import 'package:bankio/presentation/screens/home/widgets/exchange_rate_widget.dart';
 import 'package:bankio/presentation/screens/home/widgets/payment_card_slider.dart';
 import 'package:bankio/presentation/screens/home/widgets/transaction_list_widget.dart';
+import 'package:bankio/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,10 +26,26 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.fit_screen_sharp,
+                          ),
+                          const Spacer(),
+                          const Icon(
+                            Icons.phone,
+                          ),
+                          horizontalSpaceSmall(),
+                          const Icon(
+                            Icons.notifications_outlined,
+                          ),
+                        ],
+                      ),
+                      verticalSpaceMedium(),
                       PaymentCardSlider(cards: state.cards),
-                      const SizedBox(height: 20),
+                      verticalSpaceMedium(),
                       ExchangeRateWidget(rates: state.exchangeRates),
-                      const SizedBox(height: 20),
+                      verticalSpaceMedium(),
                       TransactionListWidget(transactions: state.transactions),
                     ],
                   ),
@@ -40,6 +57,7 @@ class HomePage extends StatelessWidget {
             return const SizedBox();
           },
         ),
+       
       ),
     );
   }

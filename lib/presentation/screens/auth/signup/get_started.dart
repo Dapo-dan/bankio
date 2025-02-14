@@ -85,7 +85,7 @@ class GetStartedPage extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   options[index],
-                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                  style: theme.textTheme.bodySmall?.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
