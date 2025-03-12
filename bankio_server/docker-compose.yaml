@@ -1,0 +1,44 @@
+services:
+  # Development services
+  postgres:
+    image: postgres:16.3
+    ports:
+      - "8090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: bankio
+      POSTGRES_PASSWORD: "Ur5l6GSNt2uxQ644KHO1lbmQKfETVA5w"
+    volumes:
+      - bankio_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2.6
+    ports:
+      - "8091:6379"
+    command: redis-server --requirepass "TbmnGWyVjsWm2oLxeFmvVK180I-jr2N0"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+  # Test services
+  postgres_test:
+    image: postgres:16.3
+    ports:
+      - "9090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: bankio_test
+      POSTGRES_PASSWORD: "CGpx8-qH2uHiwYZmHZG63GLWgOc8tlhx"
+    volumes:
+      - bankio_test_data:/var/lib/postgresql/data
+
+  redis_test:
+    image: redis:6.2.6
+    ports:
+      - "9091:6379"
+    command: redis-server --requirepass "-rRru39NtQuLkLCfSU6dLht9NRxSntSZ"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+volumes:
+  bankio_data:
+  bankio_test_data:
